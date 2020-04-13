@@ -6,6 +6,8 @@ import "./App.css";
 
 function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
+  
+  //Home TouchDown and Field Goal
   const [home, updateScoreH] = useState(0)
 
   const tdHome = e => {
@@ -16,6 +18,8 @@ function App() {
     updateScoreH(home + 3)
   }
 
+
+  //Away TouchDown and Field Goal
   const [away, updateScoreA] = useState(0)
 
   const tdAway = e => {
@@ -26,6 +30,21 @@ function App() {
     updateScoreA(away + 3)
   }
 
+  
+  //Create Timer
+  const [timer, setTimer] = useState(60)
+
+  useEffect(() => {
+    const clock = setTimeout(() => {
+      if (timer > 0) {
+        setTimer(timer-1)
+      } else {
+        clearTimeout(clock)
+      }
+    }, 1000)
+  }, [timer])
+
+ 
 
   return (
     <div className="container">
@@ -37,7 +56,7 @@ function App() {
             {/* TODO STEP 3 - We need to change the hardcoded values in these divs to accept dynamic values from our state. */}
             <div className="home__score">{home}</div>
           </div>
-          <div className="timer">00:03</div>
+          <div className="timer">{timer}</div>
           <div className="away">
             <h2 className="away__name">Tigers</h2>
             <div className="away__score">{away}</div>
