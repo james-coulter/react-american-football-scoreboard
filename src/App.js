@@ -1,5 +1,5 @@
 //TODO: STEP 1 - Import the useState hook.
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import BottomRow from "./BottomRow";
 import "./App.css";
 
@@ -25,6 +25,7 @@ function App() {
   const fgAway = e => {
     updateScoreA(away + 3)
   }
+
 
   return (
     <div className="container">
